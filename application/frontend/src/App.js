@@ -1,24 +1,33 @@
-import logo from './logo.svg';
 import './App.css';
-
+import SearchAndDisplay from './Components/searchAndDisplay';
+import UploadPost from './Components/upload';
 function App() {
+  const tableStyle = {
+    border: "1px solid black"
+ }
+  const tdStyle = {
+    textAlign: "center",
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div >
+      <table class="table table-striped" style={tableStyle}>
+        <thead>
+          <tr>
+            <th style={tdStyle}>student_id</th>
+            <th style={tdStyle}>student_first</th>
+            <th style={tdStyle}>student_last</th>
+            <th style={tdStyle}>student_email</th>
+            <th style={tdStyle}>student_mailing</th>
+            <th style={tdStyle}>student_gpa</th>
+          </tr>
+        </thead>
+        <SearchAndDisplay/>
+      </table>
+      <UploadPost/>
     </div>
+
+
   );
 }
 
