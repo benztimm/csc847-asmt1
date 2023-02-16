@@ -5,7 +5,7 @@ import api.api as api
 
 @app.route('/')
 def home():
-    return render_template('testupload.html')
+    return render_template('home.html')
 
 @app.route('/homepage/', defaults={'keyword': None})
 @app.route('/homepage/<keyword>')
@@ -32,7 +32,7 @@ def upload_file(student_id = None, student_first = None, student_last = None, st
         student_gpa = request.form['student_gpa']
         #CALL API TO INSERT ITEM TO TABLE
         output = api.insert(student_id,student_first,student_last,student_email,student_mailing,student_gpa)
-        return redirect(url_for('homepage'))
+        return output,200
 
     except Exception as e:
         print(f"== EXCEPTION == upload-file:\n{e}\n")
