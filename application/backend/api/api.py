@@ -2,7 +2,7 @@ from flask import jsonify
 import helper.db_helper as db
 
 def select(keyword):
-    query = """SELECT * FROM STUDENT """
+    query = """SELECT * FROM student """
     if keyword:
         query += """ WHERE student_id = %(keyword)s """
         output = db.execute_query(query=query, params={"keyword":str(keyword)})

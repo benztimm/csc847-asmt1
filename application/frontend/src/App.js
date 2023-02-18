@@ -14,12 +14,6 @@ function App() {
       <table class="table table-striped" style={tableStyle}>
         <thead>
           <tr>
-            <th style={tdStyle}>student_id</th>
-            <th style={tdStyle}>student_first</th>
-            <th style={tdStyle}>student_last</th>
-            <th style={tdStyle}>student_email</th>
-            <th style={tdStyle}>student_mailing</th>
-            <th style={tdStyle}>student_gpa</th>
           </tr>
         </thead>
         <SearchAndDisplay/>
