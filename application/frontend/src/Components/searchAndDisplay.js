@@ -2,9 +2,13 @@ import { useState, useEffect } from 'react';
 function SearchAndDisplay() {
     const [data, setData] = useState([]);
     const [search, setSearch] = useState('')
+    const [selected, setSelected] = useState('student_id')
     const handleChange = event => {
         setSearch(event.target.value);
     };
+    const handleSelectedChange = event =>{
+        setSelected(event.target.value)
+    }
 
     useEffect(() => {
         datas()
@@ -18,7 +22,7 @@ function SearchAndDisplay() {
         textAlign: "center",
     }
 
-    const DisplayData = data.filter((d) => { return String(d.student_id).includes(search) }).map((data) => {
+    const DisplayData = data.filter((d) => { return String(d[selected]).includes(search) }).map((data) => {
         return (
             <tr>
                 <td style={tdStyle}>{data.student_id}</td>
@@ -32,19 +36,35 @@ function SearchAndDisplay() {
     })
     return (
         <tbody>
+            <th style={tdStyle}>student_id</th>
+            <th style={tdStyle}>student_first</th>
+            <th style={tdStyle}>student_last</th>
+            <th style={tdStyle}>student_email</th>
+            <th style={tdStyle}>student_mailing</th>
+            <th style={tdStyle}>student_gpa</th>
             {DisplayData}
+            <br></br>
+            Search by
+            <select name="selected" onChange={handleSelectedChange}>
+                <option value="student_id">Student ID</option>
+                <option value="student_first">Student First Name</option>
+                <option value="student_last">Student Last Name</option>
+                <option value="student_email">Student Email</option>
+                <option value="student_mailing">Student Mailing Address</option>
+                <option value="student_gpa">Student GPA</option>
+            </select>
             <input
                 type="text"
-                placeholder="Search"
+                placeholder="Keyword"
                 value={search}
                 onChange={handleChange}
                 style={{
-                flexDirection: 'column',
-                justifyContent: 'center',
-                alignItems: 'center',}}
+                    flexDirection: 'column',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                }}
             />
         </tbody>
-
     )
 }
 
