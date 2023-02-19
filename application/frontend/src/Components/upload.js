@@ -40,7 +40,6 @@ function UploadPost() {
     return (
 
         <form onSubmit={handleSubmit}>
-            <br></br>
             Create New student profile
             <br></br>
             <input
