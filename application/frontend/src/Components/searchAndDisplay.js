@@ -15,14 +15,14 @@ function SearchAndDisplay() {
     }, [])
 
     const datas = async () => {
-        const response = await fetch('http://localhost:8000/homepage/');
+        const response = await fetch('http://35.236.39.216:8000/homepage/');
         setData(await response.json())
     }
     const tdStyle = {
         textAlign: "center",
     }
 
-    const DisplayData = data.filter((d) => { return String(d[selected]).includes(search) }).map((data) => {
+    const DisplayData = data.filter((d) => { return (String(d[selected])).toLowerCase().includes(search.toLowerCase()) }).map((data) => {
         return (
             <tr>
                 <td style={tdStyle}>{data.student_id}</td>

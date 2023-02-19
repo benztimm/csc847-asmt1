@@ -20,7 +20,7 @@ function UploadPost() {
             data.append('student_email', student_email);
             data.append('student_mailing', student_mailing);
             data.append('student_gpa', student_gpa);
-            let res = fetch('http://localhost:8000/upload/', {
+            let res = await fetch('http://35.236.39.216:8000/upload', {
                 method: 'POST',
                 body: data,
               })
