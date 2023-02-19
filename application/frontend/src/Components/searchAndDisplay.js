@@ -21,6 +21,11 @@ function SearchAndDisplay() {
     const tdStyle = {
         textAlign: "center",
     }
+    const style = {
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        }
 
     const DisplayData = data.filter((d) => { return (String(d[selected])).toLowerCase().includes(search.toLowerCase()) }).map((data) => {
         return (
@@ -36,7 +41,8 @@ function SearchAndDisplay() {
     })
     return (
         <div>
-            Search by
+            <div style={style}>
+                Search by
                 <select name="selected" onChange={handleSelectedChange}>
                     <option value="student_id">Student ID</option>
                     <option value="student_first">Student First Name</option>
@@ -56,6 +62,7 @@ function SearchAndDisplay() {
                         alignItems: 'center',
                     }}
                 />
+            </div>
             <tbody>
                 <th style={tdStyle}>student_id</th>
                 <th style={tdStyle}>student_first</th>
@@ -65,7 +72,7 @@ function SearchAndDisplay() {
                 <th style={tdStyle}>student_gpa</th>
                 {DisplayData}
                 <br></br>
-                
+
             </tbody>
         </div>
     )

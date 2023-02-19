@@ -1,6 +1,15 @@
 import { useState, useEffect } from 'react';
 
 function UploadPost() {
+     const style = {
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        justifyContent: 'center',
+        }
+    const margin = {
+        marginTop:'5px'
+    }
 
     const [student_id, setId] = useState("");
     const [student_first, setFirst] = useState("");
@@ -39,7 +48,7 @@ function UploadPost() {
     };
     return (
 
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} style={style}  >
             Create New student profile
             <br></br>
             <input
@@ -47,38 +56,44 @@ function UploadPost() {
                 value={student_id}
                 placeholder="student_id"
                 onChange={(e) => setId(e.target.value)}
-            /><br></br>
+                style={{marginTop:'5px'}}
+            />
             <input
+                style={{marginTop:'5px'}}
                 type="text"
                 value={student_first}
                 placeholder="student_firstname"
                 onChange={(e) => setFirst(e.target.value)}
-            /><br></br>
+            />
             <input
                 type="text"
                 value={student_last}
                 placeholder="student_lastname"
                 onChange={(e) => setlast(e.target.value)}
-            /><br></br>
+                style={{marginTop:'5px'}}
+            />
             <input
                 type="text"
                 value={student_email}
                 placeholder="student_email"
                 onChange={(e) => setEmail(e.target.value)}
-            /><br></br>
+                style={{marginTop:'5px'}}
+            />
             <input
                 type="text"
                 value={student_mailing}
                 placeholder="student_mailing address"
                 onChange={(e) => setMailing(e.target.value)}
-            /><br></br>
+                style={{marginTop:'5px'}}
+            />
             <input
                 type="text"
                 value={student_gpa}
                 placeholder="student_gpa"
                 onChange={(e) => setGpa(e.target.value)}
+                style={{marginTop:'5px'}}
             />
-
+            <br></br>
             <button type="submit">Create</button>
 
         </form>
