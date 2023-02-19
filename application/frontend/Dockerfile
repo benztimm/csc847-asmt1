@@ -1,7 +1,7 @@
 FROM node:14-alpine
 
 # Set working directory
-WORKDIR /csc847-asmt1/application/frontend
+WORKDIR /app
 
 # Copy package.json and package-lock.json files
 COPY package*.json ./
@@ -16,7 +16,7 @@ COPY . .
 RUN npm run build
 
 FROM nginx:1.19.8-alpine
-
-COPY --from=0 /csc847-asmt1/application/frontend/build /var/www/html/
+COPY --from=0 /app/build /var/www/html/
 
 EXPOSE 80
+CMD ["nginx", "-g", "daemon off;"]
