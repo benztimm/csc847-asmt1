@@ -20,6 +20,7 @@ function SearchAndDisplay() {
     }
     const tdStyle = {
         textAlign: "center",
+        color: 'blue'
     }
 
     const DisplayData = data.filter((d) => { return (String(d[selected])).toLowerCase().includes(search.toLowerCase()) }).map((data) => {
