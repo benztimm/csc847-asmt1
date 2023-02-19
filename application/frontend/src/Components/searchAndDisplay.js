@@ -20,6 +20,7 @@ function SearchAndDisplay() {
     }
     const tdStyle = {
         textAlign: "center",
+        color: 'red'
     }
     const style = {
         display: 'flex',
