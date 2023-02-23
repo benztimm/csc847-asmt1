@@ -1,14 +1,16 @@
 import { useState, useEffect } from 'react';
+import * as MetaData from './routeconfig'
+const route = MetaData.route
 
 function UploadPost() {
-     const style = {
+    const style = {
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
         justifyContent: 'center',
-        }
+    }
     const margin = {
-        marginTop:'5px'
+        marginTop: '5px'
     }
 
     const [student_id, setId] = useState("");
@@ -29,10 +31,10 @@ function UploadPost() {
             data.append('student_email', student_email);
             data.append('student_mailing', student_mailing);
             data.append('student_gpa', student_gpa);
-            let res = await fetch('http://35.236.39.216:8000/upload', {
+            let res = await fetch(`http://${route}:8000/upload`, {
                 method: 'POST',
                 body: data,
-              })
+            })
             if (res.status === 200) {
                 setId('');
                 setFirst('');
@@ -40,10 +42,14 @@ function UploadPost() {
                 setEmail('');
                 setMailing('');
                 setGpa('');
+                window.location.reload(false);
+            } else {
+                window.alert(`Incorrect format`)
             }
-            window.location.reload(false);
         } catch (err) {
             console.log(err);
+            window.location.reload(false);
+            window.alert('incorrect format')
         }
     };
     return (
@@ -56,10 +62,10 @@ function UploadPost() {
                 value={student_id}
                 placeholder="student_id"
                 onChange={(e) => setId(e.target.value)}
-                style={{marginTop:'5px'}}
+                style={{ marginTop: '5px' }}
             />
             <input
-                style={{marginTop:'5px'}}
+                style={{ marginTop: '5px' }}
                 type="text"
                 value={student_first}
                 placeholder="student_firstname"
@@ -70,28 +76,28 @@ function UploadPost() {
                 value={student_last}
                 placeholder="student_lastname"
                 onChange={(e) => setlast(e.target.value)}
-                style={{marginTop:'5px'}}
+                style={{ marginTop: '5px' }}
             />
             <input
                 type="text"
                 value={student_email}
                 placeholder="student_email"
                 onChange={(e) => setEmail(e.target.value)}
-                style={{marginTop:'5px'}}
+                style={{ marginTop: '5px' }}
             />
             <input
                 type="text"
                 value={student_mailing}
                 placeholder="student_mailing address"
                 onChange={(e) => setMailing(e.target.value)}
-                style={{marginTop:'5px'}}
+                style={{ marginTop: '5px' }}
             />
             <input
                 type="text"
                 value={student_gpa}
                 placeholder="student_gpa"
                 onChange={(e) => setGpa(e.target.value)}
-                style={{marginTop:'5px'}}
+                style={{ marginTop: '5px' }}
             />
             <br></br>
             <button type="submit">Create</button>

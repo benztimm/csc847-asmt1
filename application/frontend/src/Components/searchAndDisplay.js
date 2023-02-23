@@ -1,4 +1,7 @@
 import { useState, useEffect } from 'react';
+import * as MetaData from './routeconfig'
+const route = MetaData.route
+
 function SearchAndDisplay() {
     const [data, setData] = useState([]);
     const [search, setSearch] = useState('')
@@ -15,18 +18,17 @@ function SearchAndDisplay() {
     }, [])
 
     const datas = async () => {
-        const response = await fetch('http://35.236.39.216:8000/homepage/');
+        const response = await fetch(`http://${route}:8000/homepage/`);
         setData(await response.json())
     }
     const tdStyle = {
         textAlign: "center",
-        color: 'red'
     }
     const style = {
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        }
+    }
 
     const DisplayData = data.filter((d) => { return (String(d[selected])).toLowerCase().includes(search.toLowerCase()) }).map((data) => {
         return (
